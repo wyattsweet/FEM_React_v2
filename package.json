@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "standard",
     "build": "webpack",
+    "dev": "webpack-dev-server",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
