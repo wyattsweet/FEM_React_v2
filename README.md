@@ -1,18 +1,21 @@
 # A Complete Intro to React
 
+
 Welcome to a complete intro to React! The site actual workshop material for this repo can be found [here][gh-page]. On the master branch you will find the completed project. On the start branch you will find the barebones boilerplater of the project designed to help you get started.
 
-## Contributing
+### Contributing
 
 Please contribute, file issues, and make PRs. More than anything I'm sure there are typos abounding.
 
-## License
+### License
 
 MIT
 
 [gh-page]: http://btholt.github.io/complete-intro-to-react/
 
-## Wyatt's Course Notes
+### Wyatt's Course Notes
+
+## Day One
 
 Yarn - NPM Installs are not “deterministic”, meaning you can’t run it from any state and end up in the same state. Yarn lets you install dependencies in any order or way and you always end up with the same structure in the same way. Installs are much faster. Highly recommended for apps, Falls apart when building libraries.
 
@@ -21,7 +24,7 @@ Yarn - NPM Installs are not “deterministic”, meaning you can’t run it from
 
 
 <br/>
-## **React**
+### **React**
 
 cycle.js is reactive not to be confused with React.
 
@@ -31,7 +34,7 @@ MVC works well on the back-end? The first attempt to move mvc to the front-end w
 
 
 <br/>
-## **React and React-dom**
+### **React and React-dom**
 
 Separarte libraries so you can target different libraries using the base react library, react dom is the renderer for the dom, basically the glue layer between your react code and the browser.
 
@@ -59,7 +62,7 @@ Props are read only properties that are passed down from parent to child
 
 
 <br/>
-## **Tooling**
+### **Tooling**
 
 * **Standard** – Linting tool. ESLint with a standard set of rules (wrapped ESLint). ESLint without any configuration so it enforces one set of rules. Prohibits you from using semicolons.
 	* Project called semistandard which is the same set of rules but forces you to use semicolons. 
@@ -103,12 +106,12 @@ You wouldn't want to `es2015` in production. You'd only want to ship the individ
 
 * Now you can run `$ webpack --module-bind='js=babel' js/ClientApp.js public/bundle.js` the `--module-bind='js=babel` part now runs all js files through babel before compiling them using a loader.
 
-## Progression of Tools
+### Progression of Tools
 
 Babel first compiles ES6 to ES5, webpack compiles modules, and Uglify (included in Webpack) gets rid of all unused code.
 
 
-## JSX
+### JSX
 
 HTML inside of your JavaScript. It's OK because we're already writing JavaScript code to mimick markup, why not just write markup? 
 
@@ -133,7 +136,7 @@ return (
 )
 ```
 
-## Webpack 
+### Webpack 
 
 **CSS config**
 
@@ -170,7 +173,7 @@ Identifies to webpack where the static directory is.
 
 
 <br/>
-## React Router V4
+### React Router V4
 
 Still in Alpha at the time of course recording.
 
@@ -193,21 +196,21 @@ A good place to break a component into another component is when your doing a lo
 
 Key error in React - React requires key so it doesn't need to blow up and rebuild components every time the state changes. Can be very expensive with deeply nested, complex components. 
 
-## Proptypes
+### Proptypes
 * Proptypes are not required but they are helpful because when somebody else comes along and wants to add ShowCard somewhere they can see it takes show with these properties.
 
 Fine to leave in. Netflix cuts them out in production and React doesn't check them in production, but they're basically no bites and totally fine to leave in.
 
 `shape` allows you to declare what all the elements inside the object will be.
 
-## State
+### State
 State is the enemy with all apps, meaning bugs are usually related to state. The only thing that can modify the state of a component is within the component itself. React uses one way data flow meaning data only flows down from parent to children and it never flows up.
 
 * `event` in event handler events is a React synthetic dom event which is their imitation of their dom event, but the api is the same.
 * The only way to change state is through the `setState` function.
 * setState is a async function that schedules an update
 
-## ES6
+### ES6
 * Enchanced object literal syntax - instead of writing a function as
 
 ```JS
@@ -226,7 +229,7 @@ getState () {
 
 It means the same thing.
 
-## Testing
+### Testing
 
 **Unit testing** - Jest, created by Facebook, built on Jasmine 2. Does snapshot tests, similar to git diff, will fail and show you when something changes.
 
@@ -251,7 +254,22 @@ Important components and display components it's a good idea to write one.
 
 **very cool sidenote** `$ npm t` corresponds to `$npm run test`
 
-For integration tests you use Selenium. 
+`$ npm run test -- --coverage` gives you a cool coverage report
+
+`$ open coverage/lcov-report/index.html` opens a report in your browser
+
+or
+
+`$ open coverage/lcov-report/ShowCard.js.html`
+
+For integration tests you'd use Selenium. 
+
+**Definitely check out hot module reload**
+
+
+## Day Two Notes
+
+
 
 <br/>
 
