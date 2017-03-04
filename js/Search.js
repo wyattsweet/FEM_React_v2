@@ -1,14 +1,20 @@
 import React from 'react'
 import ShowCard from './ShowCard'
-import preload from '../public/data.json'
+const { arrayOf, shape, string } = React.PropTypes
 
 const Search = React.createClass({
+  propTypes: {
+    shows: arrayOf(shape({
+      title: string,
+      description: string
+    }))
+  },
+
   getInitialState () {
     return {
       searchTerm: ''
     }
   },
-
   handleSearchTermChange (event) {
     this.setState({searchTerm: event.target.value})
 
@@ -19,7 +25,6 @@ const Search = React.createClass({
 //    this.state.searchTerm = event.target.value
 //    this.forceUpdate()
   },
-
   render () {
     return (
       <div className='search'>
@@ -28,8 +33,7 @@ const Search = React.createClass({
           <input type='text' placeholder='search' onChange={this.handleSearchTermChange} value={this.state.searchTerm} />
         </header>
         <div>
-          {preload.shows
-
+          {this.props.shows
             // Cool es6 one liners
             .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
             .map((show) => {
