@@ -269,8 +269,14 @@ For integration tests you'd use Selenium.
 
 ## Day Two Notes
 
+methods inside of a component should go as follows (according to Brian) –
+1. PropTypes
+2. getInitialState
+3. Life cycle methods
+4. custom functions or functions you write 
+5. Render – very last thing
 
-
+**Higher Order Component** A component that incapsulates behavior and doesn't show you anything such as `BrowserRouter`
 <br/>
 
 <br/>
