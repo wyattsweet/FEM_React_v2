@@ -295,3 +295,25 @@ class Header extends React.Component {
   }
 }
 ```
+
+## Lifecycle Methods
+
+Methods in the lifecycle of the component that you can hook into.
+
+getInitialState - whenever you create a component one of the first methods it will call is get initial state.
+
+componentWillMount – called before component is mounted to the dom. He rarely uses
+
+componentDidMount – called right after component gets put into the dom. Browser DOM apis wil be available. Generally you want React to interact with DOM and you intereact with React though. Ajax would happen here, so you can load some kind of loading screen. D3 you would do stuff here.
+
+componentWillUnmount – almost exclusively for cleanup.
+
+A few more niche ones –
+
+getDefaultProps –
+
+shouldComponentUpdate – almost exclusively for performance updates, expensive to re-render deeply nested components. Basically you tell React when to update or if you have a component that should never update. Recommend not using this unless you absolutely have to. Introduces weird bugs and can be hard to debug.
+
+React perf tools for seeing where your React components are wasting render cycles. Something to look at if your app is going slow.
+
+

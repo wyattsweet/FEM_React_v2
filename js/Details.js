@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import Header from './Header'
 const { shape, string } = React.PropTypes
 
@@ -9,8 +10,21 @@ const Details = React.createClass({
       year: string,
       poster: string,
       trailer: string,
-      description: string
+      description: string,
+      imdbID: string
     })
+  },
+  getInitialState () {
+    return {
+      obdbData: {}
+    }
+  },
+  componentDidMount() {
+    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`) 
+      .then((response) => {
+        this.setState({omdbData: responsen.data})
+      })
+      .catch((error) => console.error('axios error', error))
   },
   render () {
     const { title, description, year, poster, trailer } = this.props.show
