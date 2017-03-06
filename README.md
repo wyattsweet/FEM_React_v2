@@ -214,6 +214,7 @@ State is the enemy with all apps, meaning bugs are usually related to state. The
 * Enchanced object literal syntax - instead of writing a function as
 
 ```JS
+
 var getState = function () {
 
 }
@@ -277,10 +278,20 @@ methods inside of a component should go as follows (according to Brian) –
 5. Render – very last thing
 
 **Higher Order Component** A component that incapsulates behavior and doesn't show you anything such as `BrowserRouter`
-<br/>
 
-<br/>
+**Three types of components in React**
 
-<br/>
+1. Stateless functional component see `Details.js`
+2. Stateful component `React.createClass` also see `Details.js`
+3. ES6 class 
+`Header.js`
 
-<br/>
+```JS
+class Header extends React.Component {
+  render () {
+    return (
+      <h1>markup</h1>
+    )
+  }
+}
+```
