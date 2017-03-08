@@ -316,4 +316,21 @@ shouldComponentUpdate – almost exclusively for performance updates, expensive 
 
 React perf tools for seeing where your React components are wasting render cycles. Something to look at if your app is going slow.
 
+**React dev tools are the best way to debug React code**
+
+## Redux
+
+Predictable state container for JavaScript apps.
+
+caveat – Not needed for most apps, unless your app is very complex 
+
+Simple but hard library, meaning it's not big but hard to wrap your mind around. Essential respository of all of your store. Store all of your state in one central place, not in each individual component. Best to start with normal React and only implement Redux if it's necissary. One use case is if you have the "data tunneling" problem where you have to pass data up many layers to pass it back down to multiple components.
+
+Not React specific.
+
+Data store and central place where all data lives. 
+
+Reducer – what you pass to a reduce function. Takes in a state and action and creates a new state. 
+
+Store has a root reducer which is what gets called first. Typically that calls another reducer.
 

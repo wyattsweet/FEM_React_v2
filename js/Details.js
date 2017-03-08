@@ -16,24 +16,34 @@ const Details = React.createClass({
   },
   getInitialState () {
     return {
-      obdbData: {}
+      omdbData: {}
     }
   },
   componentDidMount() {
     axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`) 
+    // arrow function here let's 'this' refer to Details
+    // arrow functions don't create new context
       .then((response) => {
-        this.setState({omdbData: responsen.data})
+        this.setState({omdbData: response.data})
       })
       .catch((error) => console.error('axios error', error))
   },
   render () {
     const { title, description, year, poster, trailer } = this.props.show
+    let rating
+    if (this.state.omdbData.imdbRating) {
+      rating = <h3>{this.state.omdbData.imdbRating}</h3> 
+    } else {
+      rating = <img src='/public/img/loading.png' alt='loading indicator' />
+    }
+
     return (
       <div className='details'>
         <Header />
         <section>
           <h1>{title}</h1>
           <h2>{year}</h2>
+          {rating}
           <img src={`/public/img/posters/${poster}`} />
           <p>{description}</p>
         </section>
