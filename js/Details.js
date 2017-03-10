@@ -19,8 +19,8 @@ const Details = React.createClass({
       omdbData: {}
     }
   },
-  componentDidMount() {
-    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`) 
+  componentDidMount () {
+    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`)
     // arrow function here let's 'this' refer to Details
     // arrow functions don't create new context
       .then((response) => {
@@ -32,7 +32,7 @@ const Details = React.createClass({
     const { title, description, year, poster, trailer } = this.props.show
     let rating
     if (this.state.omdbData.imdbRating) {
-      rating = <h3>{this.state.omdbData.imdbRating}</h3> 
+      rating = <h3>{this.state.omdbData.imdbRating}</h3>
     } else {
       rating = <img src='/public/img/loading.png' alt='loading indicator' />
     }

@@ -324,7 +324,7 @@ Predictable state container for JavaScript apps.
 
 caveat – Not needed for most apps, unless your app is very complex 
 
-Simple but hard library, meaning it's not big but hard to wrap your mind around. Essential respository of all of your store. Store all of your state in one central place, not in each individual component. Best to start with normal React and only implement Redux if it's necissary. One use case is if you have the "data tunneling" problem where you have to pass data up many layers to pass it back down to multiple components.
+Simple but hard library, meaning it's not big but hard to wrap your mind around. Essential respository of all of your state. Store all of your state in one central place, not in each individual component. Best to start with normal React and only implement Redux if it's necissary. One use case is if you have the "data tunneling" problem where you have to pass data up many layers to pass it back down to multiple components.
 
 Not React specific.
 
@@ -334,3 +334,8 @@ Reducer – what you pass to a reduce function. Takes in a state and action and 
 
 Store has a root reducer which is what gets called first. Typically that calls another reducer.
 
+## Context
+
+State and props are fundamental concepts in React. There is also context, which he recommends you should never write to, you'd be better off just moving to redux. Context, like redux, is available everywhere. It's like a global for your app.
+
+unlike props is you don't define context type, it will not show up. React team admitting that this is a "foot gun".
