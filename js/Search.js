@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ShowCard from './ShowCard'
 import Header from './Header'
 const { arrayOf, shape, string } = React.PropTypes
@@ -8,37 +9,20 @@ const Search = React.createClass({
     shows: arrayOf(shape({
       title: string,
       description: string
-    }))
+    })),
+
+    searchTerm: string
   },
 
-  getInitialState () {
-    return {
-      searchTerm: ''
-    }
-  },
-  handleSearchTermChange (event) {
-    this.setState({searchTerm: event.target.value})
-
-// Below works, but should not be used. Want to leave it in just as
-// a reminder that forceUpdate() exists. Integrating with other libraries
-// would be the only time to use forceUpdate().
-
-//    this.state.searchTerm = event.target.value
-//    this.forceUpdate()
-  },
   render () {
     return (
       <div className='search'>
         {/* true is implied below on showSearch */}
-        <Header
-          showSearch
-          searchTerm={this.state.searchTerm}
-          handleSearchTermChange={this.handleSearchTermChange}
-        />
+        <Header showSearch />
         <div>
           {this.props.shows
             // Cool es6 one liners
-            .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
+            .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
             .map((show) => {
               return (
                 <ShowCard key={show.imdbID} {...show} />
@@ -50,4 +34,10 @@ const Search = React.createClass({
   }
 })
 
-export default Search
+const mapStateToProps = (state) => {
+  return {
+    searchTerm: state.searchTerm
+  }
+}
+
+export default connect(mapStateToProps)(Search)
