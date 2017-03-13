@@ -294,6 +294,7 @@ class Header extends React.Component {
     )
   }
 }
+
 ```
 
 ## Lifecycle Methods
@@ -324,7 +325,12 @@ Predictable state container for JavaScript apps.
 
 caveat – Not needed for most apps, unless your app is very complex 
 
-Simple but hard library, meaning it's not big but hard to wrap your mind around. Essential respository of all of your state. Store all of your state in one central place, not in each individual component. Best to start with normal React and only implement Redux if it's necissary. One use case is if you have the "data tunneling" problem where you have to pass data up many layers to pass it back down to multiple components.
+Simple but hard library, meaning it's not big but hard to wrap your mind around. Essential respository of all of your state. Store all of your state in one central place, not in each individual component. Best to start with normal React and only implement Redux if it's necissary. 
+
+**Good use cases for Redux**
+1. If you have the "data tunneling" problem where you have to pass data up many layers to pass it back down to multiple components.
+
+2. If you need to centralize your data so it can be used across multiple parts of your app to synchronize data across app.
 
 Not React specific.
 
@@ -339,3 +345,17 @@ Store has a root reducer which is what gets called first. Typically that calls a
 State and props are fundamental concepts in React. There is also context, which he recommends you should never write to, you'd be better off just moving to redux. Context, like redux, is available everywhere. It's like a global for your app.
 
 unlike props is you don't define context type, it will not show up. React team admitting that this is a "foot gun".
+
+---
+
+When running react in production you need to
+1. Run webpack in production mode
+2. Set node env to equal production
+
+---
+
+***Thunk (comsci term)** - A function that represents a value. A function that lets you determine something later rather than now.
+
+
+
+

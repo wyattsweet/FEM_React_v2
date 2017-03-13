@@ -1,8 +1,9 @@
 import React from 'react'
-import axios from 'axios'
 import Header from './Header'
-const { shape, string } = React.PropTypes
+import { connect } from 'react-redux'
+import { getOMDBDetails } from './actionCreators'
 
+const { shape, string, func } = React.PropTypes
 const Details = React.createClass({
   propTypes: {
     show: shape({
@@ -12,27 +13,24 @@ const Details = React.createClass({
       trailer: string,
       description: string,
       imdbID: string
-    })
+    }),
+    omdbData: shape({
+      imdbID: string
+    }),
+    dispatch: func
   },
-  getInitialState () {
-    return {
-      omdbData: {}
+
+  componentDidMount () {
+    if (!this.props.omdbData.imdbRating) {
+      this.props.dispatch(getOMDBDetails(this.props.show.imdbID))
     }
   },
-  componentDidMount () {
-    axios.get(`http://www.omdbapi.com/?i=${this.props.show.imdbID}`)
-    // arrow function here let's 'this' refer to Details
-    // arrow functions don't create new context
-      .then((response) => {
-        this.setState({omdbData: response.data})
-      })
-      .catch((error) => console.error('axios error', error))
-  },
+
   render () {
     const { title, description, year, poster, trailer } = this.props.show
     let rating
-    if (this.state.omdbData.imdbRating) {
-      rating = <h3>{this.state.omdbData.imdbRating}</h3>
+    if (this.props.omdbData.imdbRating) {
+      rating = <h3>{this.props.omdbData.imdbRating}</h3>
     } else {
       rating = <img src='/public/img/loading.png' alt='loading indicator' />
     }
@@ -60,4 +58,12 @@ const Details = React.createClass({
 //  return <h1>blahhhh</h1>
 // }
 
-export default Details
+// state is redux state and ownProps is the props for the details component
+const mapStateToProps = (state, ownProps) => {
+  const omdbData = state.omdbData[ownProps.show.imdbID] ? state.omdbData[ownProps.show.imdbID] : {}
+  return {
+    omdbData
+  }
+}
+
+export default connect(mapStateToProps)(Details)
