@@ -357,5 +357,19 @@ When running react in production you need to
 ***Thunk (comsci term)** - A function that represents a value. A function that lets you determine something later rather than now.
 
 
+## Universal Rendering
+
+**Why use Universal Rendering?** 
+
+Rendering your app on the server first. Hard to run JS app if you're on slow wifi. Send complete markup down the wire. 
 
 
+**server.js**
+Alternatives to Express – 
+Happi amazing web server
+Restify used at Netflix
+
+
+## Code Splitting
+
+Partially loads your apps code to save on space
